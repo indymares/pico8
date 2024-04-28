@@ -5,6 +5,7 @@ __lua__
 
 function _update()
 		player_update()
+		printh(pl.dy)
 end
 
 function _draw()
@@ -52,9 +53,9 @@ function player_update()
 				pl.sp=4
 		end
 		
-		if pl.dy<0 then
+		if pl.dy<1 then
 				if collide_map(pl,"up",0) then
-						pl.y-=(pl.y+pl.h)%8
+						pl.dy=0
 				else
 					 pl.y+=pl.dy
 						pl.dy=0
@@ -63,7 +64,7 @@ function player_update()
 		
 		if pl.dy>0 then
 				if collide_map(pl,"down",0) then
-						pl.y-=(pl.y+pl.h)%8
+						pl.dy=0
 				else
 						pl.y+=pl.dy
 						pl.dy=0
